@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jmeterTestPlan version="1.2" properties="5.0" jmeter="5.2.1">
   <hashTree>
-    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="ProductionRequest" enabled="true">
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Supply to production" enabled="true">
       <stringProp name="TestPlan.comments">This test plan was created by the BlazeMeter converter v.2.3.14. Please contact support@blazemeter.com for further support.</stringProp>
       <boolProp name="TestPlan.functional_mode">false</boolProp>
       <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
-      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" enabled="true">
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments">
         <collectionProp name="Arguments.arguments"/>
       </elementProp>
       <stringProp name="TestPlan.user_define_classpath"></stringProp>
@@ -13,10 +13,6 @@
     <hashTree>
       <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
         <collectionProp name="HeaderManager.headers">
-          <elementProp name="Accept" elementType="Header">
-            <stringProp name="Header.name">Accept</stringProp>
-            <stringProp name="Header.value">application/json</stringProp>
-          </elementProp>
           <elementProp name="User-Agent" elementType="Header">
             <stringProp name="Header.name">User-Agent</stringProp>
             <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36</stringProp>
@@ -54,7 +50,6 @@
         <collectionProp name="DNSCacheManager.servers"/>
         <boolProp name="DNSCacheManager.clearEachIteration">true</boolProp>
         <boolProp name="DNSCacheManager.isCustomResolver">false</boolProp>
-        <collectionProp name="DNSCacheManager.hosts"/>
       </DNSCacheManager>
       <hashTree/>
       <AuthManager guiclass="AuthPanel" testclass="AuthManager" testname="HTTP Authorization Manager" enabled="true">
@@ -78,10 +73,10 @@
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
-          <stringProp name="LoopController.loops">10</stringProp>
+          <stringProp name="LoopController.loops">1</stringProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">100</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">100</stringProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration">0</stringProp>
         <stringProp name="ThreadGroup.delay">0</stringProp>
@@ -101,35 +96,30 @@
                   <stringProp name="Argument.name">password</stringProp>
                   <stringProp name="Argument.value">w1</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
-                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
                 <elementProp name="default_warehouse" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">true</boolProp>
                   <stringProp name="Argument.name">default_warehouse</stringProp>
-                  <stringProp name="Argument.value">e8d07968-4ce8-42b8-96d2-a686baddc3a0</stringProp>
+                  <stringProp name="Argument.value">d7382fed-2ed4-4cb1-a45f-f781e78f5f18</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
-                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
                 <elementProp name="grant_type" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">true</boolProp>
                   <stringProp name="Argument.name">grant_type</stringProp>
                   <stringProp name="Argument.value">password</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
-                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
                 <elementProp name="tenant" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">true</boolProp>
                   <stringProp name="Argument.name">tenant</stringProp>
                   <stringProp name="Argument.value">TC5</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
-                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
                 <elementProp name="username" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">true</boolProp>
                   <stringProp name="Argument.name">username</stringProp>
                   <stringProp name="Argument.value">t5@tc.com</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
-                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
               </collectionProp>
             </elementProp>
@@ -150,6 +140,10 @@
           <hashTree>
             <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
               <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
                 <elementProp name="Content-Type" elementType="Header">
                   <stringProp name="Header.name">Content-Type</stringProp>
                   <stringProp name="Header.value">application/x-www-form-urlencoded;charset=UTF-8</stringProp>
@@ -179,9 +173,13 @@
           <hashTree>
             <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
               <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
                 <elementProp name="Authorization" elementType="Header">
                   <stringProp name="Header.name">Authorization</stringProp>
-                  <stringProp name="Header.value">Bearer N5C5atWxGMVnD2gNCF7gBHKRhdzycIeYu5-qdKfGvhu-Dn9l44IqaK2KeT4oOjFSEu3p84jJBBWSbN9IN6WqZ1mF9vSHQN2oPIaPqVN6ccs2QFCcgPBnJfOgdbc-mSUkm5cGMh_c6v-aB9QjhhNYCRAmZjcTHmlITPm0sk-8f8U0toKc4evCXk1UG9ScB9IWGQJgQp-FEPFEheN_wtWwRm0WngEHDfVZm-GlEPI06dKbtXWCIRkD6FL4eeNg0kmpw4EQ5mVrdZVqKL8thRqqb8xoCsXEkRKikSKHgxrIrXiPCPlE</stringProp>
+                  <stringProp name="Header.value">Bearer hwI2i_oTmVB0Ws31VTVRDdp-127n7GvBeVlXIzMc7Cg8347jvBtrLWVCv4LetepFqGYA9BhkogMhiKzzFdSUSihTT8KD5WosoeXyqKJch1kx4ZMXIQosJTnfV1wREuVbIwmycJ7ygcDx-yRcdnLHdl4iKhX26hZJLFAFj06MwOvlRxivwm6vSGeSoN9yw8U6c4cCfRrXAncbA92oKhEG4opTfIWxkaUryBhpc_q4T54NIifY0sWWCzfzigTg8aXTObrd599btVm0vVxImg854A5e4tBWhHFTlGfOmvsMpTDC6hDe</stringProp>
                 </elementProp>
               </collectionProp>
             </HeaderManager>
@@ -208,21 +206,25 @@
           <hashTree>
             <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
               <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
                 <elementProp name="Authorization" elementType="Header">
                   <stringProp name="Header.name">Authorization</stringProp>
-                  <stringProp name="Header.value">Bearer N5C5atWxGMVnD2gNCF7gBHKRhdzycIeYu5-qdKfGvhu-Dn9l44IqaK2KeT4oOjFSEu3p84jJBBWSbN9IN6WqZ1mF9vSHQN2oPIaPqVN6ccs2QFCcgPBnJfOgdbc-mSUkm5cGMh_c6v-aB9QjhhNYCRAmZjcTHmlITPm0sk-8f8U0toKc4evCXk1UG9ScB9IWGQJgQp-FEPFEheN_wtWwRm0WngEHDfVZm-GlEPI06dKbtXWCIRkD6FL4eeNg0kmpw4EQ5mVrdZVqKL8thRqqb8xoCsXEkRKikSKHgxrIrXiPCPlE</stringProp>
+                  <stringProp name="Header.value">Bearer hwI2i_oTmVB0Ws31VTVRDdp-127n7GvBeVlXIzMc7Cg8347jvBtrLWVCv4LetepFqGYA9BhkogMhiKzzFdSUSihTT8KD5WosoeXyqKJch1kx4ZMXIQosJTnfV1wREuVbIwmycJ7ygcDx-yRcdnLHdl4iKhX26hZJLFAFj06MwOvlRxivwm6vSGeSoN9yw8U6c4cCfRrXAncbA92oKhEG4opTfIWxkaUryBhpc_q4T54NIifY0sWWCzfzigTg8aXTObrd599btVm0vVxImg854A5e4tBWhHFTlGfOmvsMpTDC6hDe</stringProp>
                 </elementProp>
               </collectionProp>
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="http://loxodo.tech/api/tasks/count/my?warehouse_id=e8d07968-4ce8-42b8-96d2-a686baddc3a0" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="http://loxodo.tech/api/tasks/count/my?warehouse_id=d7382fed-2ed4-4cb1-a45f-f781e78f5f18" enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments">
                 <elementProp name="warehouse_id" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.name">warehouse_id</stringProp>
-                  <stringProp name="Argument.value">e8d07968-4ce8-42b8-96d2-a686baddc3a0</stringProp>
+                  <stringProp name="Argument.value">d7382fed-2ed4-4cb1-a45f-f781e78f5f18</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
               </collectionProp>
@@ -244,15 +246,19 @@
           <hashTree>
             <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
               <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
                 <elementProp name="Authorization" elementType="Header">
                   <stringProp name="Header.name">Authorization</stringProp>
-                  <stringProp name="Header.value">Bearer N5C5atWxGMVnD2gNCF7gBHKRhdzycIeYu5-qdKfGvhu-Dn9l44IqaK2KeT4oOjFSEu3p84jJBBWSbN9IN6WqZ1mF9vSHQN2oPIaPqVN6ccs2QFCcgPBnJfOgdbc-mSUkm5cGMh_c6v-aB9QjhhNYCRAmZjcTHmlITPm0sk-8f8U0toKc4evCXk1UG9ScB9IWGQJgQp-FEPFEheN_wtWwRm0WngEHDfVZm-GlEPI06dKbtXWCIRkD6FL4eeNg0kmpw4EQ5mVrdZVqKL8thRqqb8xoCsXEkRKikSKHgxrIrXiPCPlE</stringProp>
+                  <stringProp name="Header.value">Bearer hwI2i_oTmVB0Ws31VTVRDdp-127n7GvBeVlXIzMc7Cg8347jvBtrLWVCv4LetepFqGYA9BhkogMhiKzzFdSUSihTT8KD5WosoeXyqKJch1kx4ZMXIQosJTnfV1wREuVbIwmycJ7ygcDx-yRcdnLHdl4iKhX26hZJLFAFj06MwOvlRxivwm6vSGeSoN9yw8U6c4cCfRrXAncbA92oKhEG4opTfIWxkaUryBhpc_q4T54NIifY0sWWCzfzigTg8aXTObrd599btVm0vVxImg854A5e4tBWhHFTlGfOmvsMpTDC6hDe</stringProp>
                 </elementProp>
               </collectionProp>
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="http://loxodo.tech/api/tasks/count?warehouse_id=e8d07968-4ce8-42b8-96d2-a686baddc3a0&amp;category=available" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="http://loxodo.tech/api/tasks/count?warehouse_id=d7382fed-2ed4-4cb1-a45f-f781e78f5f18&amp;category=available" enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments">
                 <elementProp name="category" elementType="HTTPArgument">
@@ -264,7 +270,7 @@
                 <elementProp name="warehouse_id" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.name">warehouse_id</stringProp>
-                  <stringProp name="Argument.value">e8d07968-4ce8-42b8-96d2-a686baddc3a0</stringProp>
+                  <stringProp name="Argument.value">d7382fed-2ed4-4cb1-a45f-f781e78f5f18</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
               </collectionProp>
@@ -286,27 +292,31 @@
           <hashTree>
             <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
               <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
                 <elementProp name="Authorization" elementType="Header">
                   <stringProp name="Header.name">Authorization</stringProp>
-                  <stringProp name="Header.value">Bearer N5C5atWxGMVnD2gNCF7gBHKRhdzycIeYu5-qdKfGvhu-Dn9l44IqaK2KeT4oOjFSEu3p84jJBBWSbN9IN6WqZ1mF9vSHQN2oPIaPqVN6ccs2QFCcgPBnJfOgdbc-mSUkm5cGMh_c6v-aB9QjhhNYCRAmZjcTHmlITPm0sk-8f8U0toKc4evCXk1UG9ScB9IWGQJgQp-FEPFEheN_wtWwRm0WngEHDfVZm-GlEPI06dKbtXWCIRkD6FL4eeNg0kmpw4EQ5mVrdZVqKL8thRqqb8xoCsXEkRKikSKHgxrIrXiPCPlE</stringProp>
+                  <stringProp name="Header.value">Bearer hwI2i_oTmVB0Ws31VTVRDdp-127n7GvBeVlXIzMc7Cg8347jvBtrLWVCv4LetepFqGYA9BhkogMhiKzzFdSUSihTT8KD5WosoeXyqKJch1kx4ZMXIQosJTnfV1wREuVbIwmycJ7ygcDx-yRcdnLHdl4iKhX26hZJLFAFj06MwOvlRxivwm6vSGeSoN9yw8U6c4cCfRrXAncbA92oKhEG4opTfIWxkaUryBhpc_q4T54NIifY0sWWCzfzigTg8aXTObrd599btVm0vVxImg854A5e4tBWhHFTlGfOmvsMpTDC6hDe</stringProp>
                 </elementProp>
               </collectionProp>
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="http://loxodo.tech/api/v2/reports/task?tenant=TC5&amp;warehouse_ID=e8d07968-4ce8-42b8-96d2-a686baddc3a0&amp;from_Date=03/22/2020&amp;to_Date=03/28/2020" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="http://loxodo.tech/api/v2/reports/task?tenant=TC5&amp;warehouse_ID=d7382fed-2ed4-4cb1-a45f-f781e78f5f18&amp;from_Date=04/05/2020&amp;to_Date=04/11/2020" enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments">
                 <elementProp name="to_Date" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">true</boolProp>
                   <stringProp name="Argument.name">to_Date</stringProp>
-                  <stringProp name="Argument.value">03/28/2020</stringProp>
+                  <stringProp name="Argument.value">04/11/2020</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
                 <elementProp name="from_Date" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">true</boolProp>
                   <stringProp name="Argument.name">from_Date</stringProp>
-                  <stringProp name="Argument.value">03/22/2020</stringProp>
+                  <stringProp name="Argument.value">04/05/2020</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
                 <elementProp name="tenant" elementType="HTTPArgument">
@@ -318,7 +328,7 @@
                 <elementProp name="warehouse_ID" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.name">warehouse_ID</stringProp>
-                  <stringProp name="Argument.value">e8d07968-4ce8-42b8-96d2-a686baddc3a0</stringProp>
+                  <stringProp name="Argument.value">d7382fed-2ed4-4cb1-a45f-f781e78f5f18</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
               </collectionProp>
@@ -340,44 +350,44 @@
           <hashTree>
             <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
               <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
                 <elementProp name="Authorization" elementType="Header">
                   <stringProp name="Header.name">Authorization</stringProp>
-                  <stringProp name="Header.value">Bearer N5C5atWxGMVnD2gNCF7gBHKRhdzycIeYu5-qdKfGvhu-Dn9l44IqaK2KeT4oOjFSEu3p84jJBBWSbN9IN6WqZ1mF9vSHQN2oPIaPqVN6ccs2QFCcgPBnJfOgdbc-mSUkm5cGMh_c6v-aB9QjhhNYCRAmZjcTHmlITPm0sk-8f8U0toKc4evCXk1UG9ScB9IWGQJgQp-FEPFEheN_wtWwRm0WngEHDfVZm-GlEPI06dKbtXWCIRkD6FL4eeNg0kmpw4EQ5mVrdZVqKL8thRqqb8xoCsXEkRKikSKHgxrIrXiPCPlE</stringProp>
+                  <stringProp name="Header.value">Bearer hwI2i_oTmVB0Ws31VTVRDdp-127n7GvBeVlXIzMc7Cg8347jvBtrLWVCv4LetepFqGYA9BhkogMhiKzzFdSUSihTT8KD5WosoeXyqKJch1kx4ZMXIQosJTnfV1wREuVbIwmycJ7ygcDx-yRcdnLHdl4iKhX26hZJLFAFj06MwOvlRxivwm6vSGeSoN9yw8U6c4cCfRrXAncbA92oKhEG4opTfIWxkaUryBhpc_q4T54NIifY0sWWCzfzigTg8aXTObrd599btVm0vVxImg854A5e4tBWhHFTlGfOmvsMpTDC6hDe</stringProp>
                 </elementProp>
               </collectionProp>
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="http://loxodo.tech/api/v2/reports/task/daily-completion?tenant=TC5&amp;warehouse_ID=e8d07968-4ce8-42b8-96d2-a686baddc3a0&amp;from_Date=03/22/2020&amp;to_Date=03/28/2020" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="http://loxodo.tech/api/v2/reports/task/daily-completion?tenant=TC5&amp;warehouse_ID=d7382fed-2ed4-4cb1-a45f-f781e78f5f18&amp;from_Date=04/05/2020&amp;to_Date=04/11/2020" enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments">
                 <elementProp name="to_Date" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">true</boolProp>
                   <stringProp name="Argument.name">to_Date</stringProp>
-                  <stringProp name="Argument.value">03/28/2020</stringProp>
+                  <stringProp name="Argument.value">04/11/2020</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
-                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
                 <elementProp name="from_Date" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">true</boolProp>
                   <stringProp name="Argument.name">from_Date</stringProp>
-                  <stringProp name="Argument.value">03/22/2020</stringProp>
+                  <stringProp name="Argument.value">04/05/2020</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
-                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
                 <elementProp name="tenant" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.name">tenant</stringProp>
                   <stringProp name="Argument.value">TC5</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
-                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
                 <elementProp name="warehouse_ID" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.name">warehouse_ID</stringProp>
-                  <stringProp name="Argument.value">e8d07968-4ce8-42b8-96d2-a686baddc3a0</stringProp>
+                  <stringProp name="Argument.value">d7382fed-2ed4-4cb1-a45f-f781e78f5f18</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
-                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
               </collectionProp>
             </elementProp>
@@ -398,27 +408,31 @@
           <hashTree>
             <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
               <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
                 <elementProp name="Authorization" elementType="Header">
                   <stringProp name="Header.name">Authorization</stringProp>
-                  <stringProp name="Header.value">Bearer N5C5atWxGMVnD2gNCF7gBHKRhdzycIeYu5-qdKfGvhu-Dn9l44IqaK2KeT4oOjFSEu3p84jJBBWSbN9IN6WqZ1mF9vSHQN2oPIaPqVN6ccs2QFCcgPBnJfOgdbc-mSUkm5cGMh_c6v-aB9QjhhNYCRAmZjcTHmlITPm0sk-8f8U0toKc4evCXk1UG9ScB9IWGQJgQp-FEPFEheN_wtWwRm0WngEHDfVZm-GlEPI06dKbtXWCIRkD6FL4eeNg0kmpw4EQ5mVrdZVqKL8thRqqb8xoCsXEkRKikSKHgxrIrXiPCPlE</stringProp>
+                  <stringProp name="Header.value">Bearer hwI2i_oTmVB0Ws31VTVRDdp-127n7GvBeVlXIzMc7Cg8347jvBtrLWVCv4LetepFqGYA9BhkogMhiKzzFdSUSihTT8KD5WosoeXyqKJch1kx4ZMXIQosJTnfV1wREuVbIwmycJ7ygcDx-yRcdnLHdl4iKhX26hZJLFAFj06MwOvlRxivwm6vSGeSoN9yw8U6c4cCfRrXAncbA92oKhEG4opTfIWxkaUryBhpc_q4T54NIifY0sWWCzfzigTg8aXTObrd599btVm0vVxImg854A5e4tBWhHFTlGfOmvsMpTDC6hDe</stringProp>
                 </elementProp>
               </collectionProp>
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="http://loxodo.tech/api/v2/reports/task/user-performance?tenant=TC5&amp;warehouse_ID=e8d07968-4ce8-42b8-96d2-a686baddc3a0&amp;from_Date=03/22/2020&amp;to_Date=03/28/2020" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="http://loxodo.tech/api/v2/reports/task/user-performance?tenant=TC5&amp;warehouse_ID=d7382fed-2ed4-4cb1-a45f-f781e78f5f18&amp;from_Date=04/05/2020&amp;to_Date=04/11/2020" enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments">
                 <elementProp name="to_Date" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">true</boolProp>
                   <stringProp name="Argument.name">to_Date</stringProp>
-                  <stringProp name="Argument.value">03/28/2020</stringProp>
+                  <stringProp name="Argument.value">04/11/2020</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
                 <elementProp name="from_Date" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">true</boolProp>
                   <stringProp name="Argument.name">from_Date</stringProp>
-                  <stringProp name="Argument.value">03/22/2020</stringProp>
+                  <stringProp name="Argument.value">04/05/2020</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
                 <elementProp name="tenant" elementType="HTTPArgument">
@@ -430,7 +444,7 @@
                 <elementProp name="warehouse_ID" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.name">warehouse_ID</stringProp>
-                  <stringProp name="Argument.value">e8d07968-4ce8-42b8-96d2-a686baddc3a0</stringProp>
+                  <stringProp name="Argument.value">d7382fed-2ed4-4cb1-a45f-f781e78f5f18</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
               </collectionProp>
@@ -452,27 +466,31 @@
           <hashTree>
             <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
               <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
                 <elementProp name="Authorization" elementType="Header">
                   <stringProp name="Header.name">Authorization</stringProp>
-                  <stringProp name="Header.value">Bearer N5C5atWxGMVnD2gNCF7gBHKRhdzycIeYu5-qdKfGvhu-Dn9l44IqaK2KeT4oOjFSEu3p84jJBBWSbN9IN6WqZ1mF9vSHQN2oPIaPqVN6ccs2QFCcgPBnJfOgdbc-mSUkm5cGMh_c6v-aB9QjhhNYCRAmZjcTHmlITPm0sk-8f8U0toKc4evCXk1UG9ScB9IWGQJgQp-FEPFEheN_wtWwRm0WngEHDfVZm-GlEPI06dKbtXWCIRkD6FL4eeNg0kmpw4EQ5mVrdZVqKL8thRqqb8xoCsXEkRKikSKHgxrIrXiPCPlE</stringProp>
+                  <stringProp name="Header.value">Bearer hwI2i_oTmVB0Ws31VTVRDdp-127n7GvBeVlXIzMc7Cg8347jvBtrLWVCv4LetepFqGYA9BhkogMhiKzzFdSUSihTT8KD5WosoeXyqKJch1kx4ZMXIQosJTnfV1wREuVbIwmycJ7ygcDx-yRcdnLHdl4iKhX26hZJLFAFj06MwOvlRxivwm6vSGeSoN9yw8U6c4cCfRrXAncbA92oKhEG4opTfIWxkaUryBhpc_q4T54NIifY0sWWCzfzigTg8aXTObrd599btVm0vVxImg854A5e4tBWhHFTlGfOmvsMpTDC6hDe</stringProp>
                 </elementProp>
               </collectionProp>
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="http://loxodo.tech/api/v2/reports/outbound/shipments?tenant=TC5&amp;warehouse_ID=e8d07968-4ce8-42b8-96d2-a686baddc3a0&amp;from_Date=03/22/2020&amp;to_Date=03/28/2020" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="http://loxodo.tech/api/v2/reports/outbound/shipments?tenant=TC5&amp;warehouse_ID=d7382fed-2ed4-4cb1-a45f-f781e78f5f18&amp;from_Date=04/05/2020&amp;to_Date=04/11/2020" enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments">
                 <elementProp name="to_Date" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">true</boolProp>
                   <stringProp name="Argument.name">to_Date</stringProp>
-                  <stringProp name="Argument.value">03/28/2020</stringProp>
+                  <stringProp name="Argument.value">04/11/2020</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
                 <elementProp name="from_Date" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">true</boolProp>
                   <stringProp name="Argument.name">from_Date</stringProp>
-                  <stringProp name="Argument.value">03/22/2020</stringProp>
+                  <stringProp name="Argument.value">04/05/2020</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
                 <elementProp name="tenant" elementType="HTTPArgument">
@@ -484,7 +502,7 @@
                 <elementProp name="warehouse_ID" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.name">warehouse_ID</stringProp>
-                  <stringProp name="Argument.value">e8d07968-4ce8-42b8-96d2-a686baddc3a0</stringProp>
+                  <stringProp name="Argument.value">d7382fed-2ed4-4cb1-a45f-f781e78f5f18</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
               </collectionProp>
@@ -506,9 +524,13 @@
           <hashTree>
             <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
               <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
                 <elementProp name="Authorization" elementType="Header">
                   <stringProp name="Header.name">Authorization</stringProp>
-                  <stringProp name="Header.value">Bearer N5C5atWxGMVnD2gNCF7gBHKRhdzycIeYu5-qdKfGvhu-Dn9l44IqaK2KeT4oOjFSEu3p84jJBBWSbN9IN6WqZ1mF9vSHQN2oPIaPqVN6ccs2QFCcgPBnJfOgdbc-mSUkm5cGMh_c6v-aB9QjhhNYCRAmZjcTHmlITPm0sk-8f8U0toKc4evCXk1UG9ScB9IWGQJgQp-FEPFEheN_wtWwRm0WngEHDfVZm-GlEPI06dKbtXWCIRkD6FL4eeNg0kmpw4EQ5mVrdZVqKL8thRqqb8xoCsXEkRKikSKHgxrIrXiPCPlE</stringProp>
+                  <stringProp name="Header.value">Bearer hwI2i_oTmVB0Ws31VTVRDdp-127n7GvBeVlXIzMc7Cg8347jvBtrLWVCv4LetepFqGYA9BhkogMhiKzzFdSUSihTT8KD5WosoeXyqKJch1kx4ZMXIQosJTnfV1wREuVbIwmycJ7ygcDx-yRcdnLHdl4iKhX26hZJLFAFj06MwOvlRxivwm6vSGeSoN9yw8U6c4cCfRrXAncbA92oKhEG4opTfIWxkaUryBhpc_q4T54NIifY0sWWCzfzigTg8aXTObrd599btVm0vVxImg854A5e4tBWhHFTlGfOmvsMpTDC6hDe</stringProp>
                 </elementProp>
               </collectionProp>
             </HeaderManager>
@@ -548,9 +570,13 @@
           <hashTree>
             <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
               <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
                 <elementProp name="Authorization" elementType="Header">
                   <stringProp name="Header.name">Authorization</stringProp>
-                  <stringProp name="Header.value">Bearer N5C5atWxGMVnD2gNCF7gBHKRhdzycIeYu5-qdKfGvhu-Dn9l44IqaK2KeT4oOjFSEu3p84jJBBWSbN9IN6WqZ1mF9vSHQN2oPIaPqVN6ccs2QFCcgPBnJfOgdbc-mSUkm5cGMh_c6v-aB9QjhhNYCRAmZjcTHmlITPm0sk-8f8U0toKc4evCXk1UG9ScB9IWGQJgQp-FEPFEheN_wtWwRm0WngEHDfVZm-GlEPI06dKbtXWCIRkD6FL4eeNg0kmpw4EQ5mVrdZVqKL8thRqqb8xoCsXEkRKikSKHgxrIrXiPCPlE</stringProp>
+                  <stringProp name="Header.value">Bearer hwI2i_oTmVB0Ws31VTVRDdp-127n7GvBeVlXIzMc7Cg8347jvBtrLWVCv4LetepFqGYA9BhkogMhiKzzFdSUSihTT8KD5WosoeXyqKJch1kx4ZMXIQosJTnfV1wREuVbIwmycJ7ygcDx-yRcdnLHdl4iKhX26hZJLFAFj06MwOvlRxivwm6vSGeSoN9yw8U6c4cCfRrXAncbA92oKhEG4opTfIWxkaUryBhpc_q4T54NIifY0sWWCzfzigTg8aXTObrd599btVm0vVxImg854A5e4tBWhHFTlGfOmvsMpTDC6hDe</stringProp>
                 </elementProp>
               </collectionProp>
             </HeaderManager>
@@ -577,33 +603,37 @@
           <hashTree>
             <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
               <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
                 <elementProp name="Authorization" elementType="Header">
                   <stringProp name="Header.name">Authorization</stringProp>
-                  <stringProp name="Header.value">Bearer N5C5atWxGMVnD2gNCF7gBHKRhdzycIeYu5-qdKfGvhu-Dn9l44IqaK2KeT4oOjFSEu3p84jJBBWSbN9IN6WqZ1mF9vSHQN2oPIaPqVN6ccs2QFCcgPBnJfOgdbc-mSUkm5cGMh_c6v-aB9QjhhNYCRAmZjcTHmlITPm0sk-8f8U0toKc4evCXk1UG9ScB9IWGQJgQp-FEPFEheN_wtWwRm0WngEHDfVZm-GlEPI06dKbtXWCIRkD6FL4eeNg0kmpw4EQ5mVrdZVqKL8thRqqb8xoCsXEkRKikSKHgxrIrXiPCPlE</stringProp>
+                  <stringProp name="Header.value">Bearer hwI2i_oTmVB0Ws31VTVRDdp-127n7GvBeVlXIzMc7Cg8347jvBtrLWVCv4LetepFqGYA9BhkogMhiKzzFdSUSihTT8KD5WosoeXyqKJch1kx4ZMXIQosJTnfV1wREuVbIwmycJ7ygcDx-yRcdnLHdl4iKhX26hZJLFAFj06MwOvlRxivwm6vSGeSoN9yw8U6c4cCfRrXAncbA92oKhEG4opTfIWxkaUryBhpc_q4T54NIifY0sWWCzfzigTg8aXTObrd599btVm0vVxImg854A5e4tBWhHFTlGfOmvsMpTDC6hDe</stringProp>
                 </elementProp>
               </collectionProp>
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="http://loxodo.tech/api/production-requests?warehouse_ID=e8d07968-4ce8-42b8-96d2-a686baddc3a0&amp;paginate=true&amp;status=0" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="http://loxodo.tech/api/zones?warehouse_id=d7382fed-2ed4-4cb1-a45f-f781e78f5f18&amp;page=1&amp;limit=50" enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments">
-                <elementProp name="paginate" elementType="HTTPArgument">
+                <elementProp name="limit" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">paginate</stringProp>
-                  <stringProp name="Argument.value">true</stringProp>
+                  <stringProp name="Argument.name">limit</stringProp>
+                  <stringProp name="Argument.value">50</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
-                <elementProp name="warehouse_ID" elementType="HTTPArgument">
+                <elementProp name="page" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">warehouse_ID</stringProp>
-                  <stringProp name="Argument.value">e8d07968-4ce8-42b8-96d2-a686baddc3a0</stringProp>
+                  <stringProp name="Argument.name">page</stringProp>
+                  <stringProp name="Argument.value">1</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
-                <elementProp name="status" elementType="HTTPArgument">
+                <elementProp name="warehouse_id" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">status</stringProp>
-                  <stringProp name="Argument.value">0</stringProp>
+                  <stringProp name="Argument.name">warehouse_id</stringProp>
+                  <stringProp name="Argument.value">d7382fed-2ed4-4cb1-a45f-f781e78f5f18</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
               </collectionProp>
@@ -612,7 +642,7 @@
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol">http</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">api/production-requests</stringProp>
+            <stringProp name="HTTPSampler.path">api/zones</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -625,15 +655,207 @@
           <hashTree>
             <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
               <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
                 <elementProp name="Authorization" elementType="Header">
                   <stringProp name="Header.name">Authorization</stringProp>
-                  <stringProp name="Header.value">Bearer N5C5atWxGMVnD2gNCF7gBHKRhdzycIeYu5-qdKfGvhu-Dn9l44IqaK2KeT4oOjFSEu3p84jJBBWSbN9IN6WqZ1mF9vSHQN2oPIaPqVN6ccs2QFCcgPBnJfOgdbc-mSUkm5cGMh_c6v-aB9QjhhNYCRAmZjcTHmlITPm0sk-8f8U0toKc4evCXk1UG9ScB9IWGQJgQp-FEPFEheN_wtWwRm0WngEHDfVZm-GlEPI06dKbtXWCIRkD6FL4eeNg0kmpw4EQ5mVrdZVqKL8thRqqb8xoCsXEkRKikSKHgxrIrXiPCPlE</stringProp>
+                  <stringProp name="Header.value">Bearer hwI2i_oTmVB0Ws31VTVRDdp-127n7GvBeVlXIzMc7Cg8347jvBtrLWVCv4LetepFqGYA9BhkogMhiKzzFdSUSihTT8KD5WosoeXyqKJch1kx4ZMXIQosJTnfV1wREuVbIwmycJ7ygcDx-yRcdnLHdl4iKhX26hZJLFAFj06MwOvlRxivwm6vSGeSoN9yw8U6c4cCfRrXAncbA92oKhEG4opTfIWxkaUryBhpc_q4T54NIifY0sWWCzfzigTg8aXTObrd599btVm0vVxImg854A5e4tBWhHFTlGfOmvsMpTDC6hDe</stringProp>
                 </elementProp>
               </collectionProp>
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="http://loxodo.tech/api/uoms" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="http://loxodo.tech/api/v2/supply-to-production/tasks?warehouse_ID=d7382fed-2ed4-4cb1-a45f-f781e78f5f18&amp;paginate=true&amp;status=%5B0,1%5D" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="paginate" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">paginate</stringProp>
+                  <stringProp name="Argument.value">true</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="warehouse_ID" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">warehouse_ID</stringProp>
+                  <stringProp name="Argument.value">d7382fed-2ed4-4cb1-a45f-f781e78f5f18</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="status" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.name">status</stringProp>
+                  <stringProp name="Argument.value">[0,1]</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">http</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">api/v2/supply-to-production/tasks</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+                <elementProp name="Authorization" elementType="Header">
+                  <stringProp name="Header.name">Authorization</stringProp>
+                  <stringProp name="Header.value">Bearer hwI2i_oTmVB0Ws31VTVRDdp-127n7GvBeVlXIzMc7Cg8347jvBtrLWVCv4LetepFqGYA9BhkogMhiKzzFdSUSihTT8KD5WosoeXyqKJch1kx4ZMXIQosJTnfV1wREuVbIwmycJ7ygcDx-yRcdnLHdl4iKhX26hZJLFAFj06MwOvlRxivwm6vSGeSoN9yw8U6c4cCfRrXAncbA92oKhEG4opTfIWxkaUryBhpc_q4T54NIifY0sWWCzfzigTg8aXTObrd599btVm0vVxImg854A5e4tBWhHFTlGfOmvsMpTDC6hDe</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="http://loxodo.tech/api/tasks/has-inprocess?warehouse_id=d7382fed-2ed4-4cb1-a45f-f781e78f5f18" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="warehouse_id" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">warehouse_id</stringProp>
+                  <stringProp name="Argument.value">d7382fed-2ed4-4cb1-a45f-f781e78f5f18</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">http</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">api/tasks/has-inprocess</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+                <elementProp name="Authorization" elementType="Header">
+                  <stringProp name="Header.name">Authorization</stringProp>
+                  <stringProp name="Header.value">Bearer hwI2i_oTmVB0Ws31VTVRDdp-127n7GvBeVlXIzMc7Cg8347jvBtrLWVCv4LetepFqGYA9BhkogMhiKzzFdSUSihTT8KD5WosoeXyqKJch1kx4ZMXIQosJTnfV1wREuVbIwmycJ7ygcDx-yRcdnLHdl4iKhX26hZJLFAFj06MwOvlRxivwm6vSGeSoN9yw8U6c4cCfRrXAncbA92oKhEG4opTfIWxkaUryBhpc_q4T54NIifY0sWWCzfzigTg8aXTObrd599btVm0vVxImg854A5e4tBWhHFTlGfOmvsMpTDC6hDe</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="http://loxodo.tech/api/v2/supply-to-production/tasks/take" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;task_id&quot;:1349}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">http</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">api/v2/supply-to-production/tasks/take</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+                <elementProp name="Authorization" elementType="Header">
+                  <stringProp name="Header.name">Authorization</stringProp>
+                  <stringProp name="Header.value">Bearer hwI2i_oTmVB0Ws31VTVRDdp-127n7GvBeVlXIzMc7Cg8347jvBtrLWVCv4LetepFqGYA9BhkogMhiKzzFdSUSihTT8KD5WosoeXyqKJch1kx4ZMXIQosJTnfV1wREuVbIwmycJ7ygcDx-yRcdnLHdl4iKhX26hZJLFAFj06MwOvlRxivwm6vSGeSoN9yw8U6c4cCfRrXAncbA92oKhEG4opTfIWxkaUryBhpc_q4T54NIifY0sWWCzfzigTg8aXTObrd599btVm0vVxImg854A5e4tBWhHFTlGfOmvsMpTDC6hDe</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="http://loxodo.tech/api/v2/supply-to-production/tasks?warehouse_ID=d7382fed-2ed4-4cb1-a45f-f781e78f5f18&amp;paginate=true&amp;status=%5B0,1%5D" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="paginate" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">paginate</stringProp>
+                  <stringProp name="Argument.value">true</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="warehouse_ID" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">warehouse_ID</stringProp>
+                  <stringProp name="Argument.value">d7382fed-2ed4-4cb1-a45f-f781e78f5f18</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="status" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.name">status</stringProp>
+                  <stringProp name="Argument.value">[0,1]</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">http</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">api/v2/supply-to-production/tasks</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+                <elementProp name="Authorization" elementType="Header">
+                  <stringProp name="Header.name">Authorization</stringProp>
+                  <stringProp name="Header.value">Bearer hwI2i_oTmVB0Ws31VTVRDdp-127n7GvBeVlXIzMc7Cg8347jvBtrLWVCv4LetepFqGYA9BhkogMhiKzzFdSUSihTT8KD5WosoeXyqKJch1kx4ZMXIQosJTnfV1wREuVbIwmycJ7ygcDx-yRcdnLHdl4iKhX26hZJLFAFj06MwOvlRxivwm6vSGeSoN9yw8U6c4cCfRrXAncbA92oKhEG4opTfIWxkaUryBhpc_q4T54NIifY0sWWCzfzigTg8aXTObrd599btVm0vVxImg854A5e4tBWhHFTlGfOmvsMpTDC6hDe</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="http://loxodo.tech/api/license-plates/all/" enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
@@ -641,7 +863,7 @@
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol">http</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">api/uoms</stringProp>
+            <stringProp name="HTTPSampler.path">api/license-plates/all/</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -654,81 +876,82 @@
           <hashTree>
             <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
               <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
                 <elementProp name="Authorization" elementType="Header">
                   <stringProp name="Header.name">Authorization</stringProp>
-                  <stringProp name="Header.value">Bearer N5C5atWxGMVnD2gNCF7gBHKRhdzycIeYu5-qdKfGvhu-Dn9l44IqaK2KeT4oOjFSEu3p84jJBBWSbN9IN6WqZ1mF9vSHQN2oPIaPqVN6ccs2QFCcgPBnJfOgdbc-mSUkm5cGMh_c6v-aB9QjhhNYCRAmZjcTHmlITPm0sk-8f8U0toKc4evCXk1UG9ScB9IWGQJgQp-FEPFEheN_wtWwRm0WngEHDfVZm-GlEPI06dKbtXWCIRkD6FL4eeNg0kmpw4EQ5mVrdZVqKL8thRqqb8xoCsXEkRKikSKHgxrIrXiPCPlE</stringProp>
+                  <stringProp name="Header.value">Bearer hwI2i_oTmVB0Ws31VTVRDdp-127n7GvBeVlXIzMc7Cg8347jvBtrLWVCv4LetepFqGYA9BhkogMhiKzzFdSUSihTT8KD5WosoeXyqKJch1kx4ZMXIQosJTnfV1wREuVbIwmycJ7ygcDx-yRcdnLHdl4iKhX26hZJLFAFj06MwOvlRxivwm6vSGeSoN9yw8U6c4cCfRrXAncbA92oKhEG4opTfIWxkaUryBhpc_q4T54NIifY0sWWCzfzigTg8aXTObrd599btVm0vVxImg854A5e4tBWhHFTlGfOmvsMpTDC6hDe</stringProp>
                 </elementProp>
               </collectionProp>
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="http://loxodo.tech/api/items/all?page=1&amp;limit=50&amp;search=1" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="http://loxodo.tech/api/v2/supply-to-production/tasks/1349/current-bin" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">http</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">api/v2/supply-to-production/tasks/1349/current-bin</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+                <elementProp name="Authorization" elementType="Header">
+                  <stringProp name="Header.name">Authorization</stringProp>
+                  <stringProp name="Header.value">Bearer hwI2i_oTmVB0Ws31VTVRDdp-127n7GvBeVlXIzMc7Cg8347jvBtrLWVCv4LetepFqGYA9BhkogMhiKzzFdSUSihTT8KD5WosoeXyqKJch1kx4ZMXIQosJTnfV1wREuVbIwmycJ7ygcDx-yRcdnLHdl4iKhX26hZJLFAFj06MwOvlRxivwm6vSGeSoN9yw8U6c4cCfRrXAncbA92oKhEG4opTfIWxkaUryBhpc_q4T54NIifY0sWWCzfzigTg8aXTObrd599btVm0vVxImg854A5e4tBWhHFTlGfOmvsMpTDC6hDe</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="http://loxodo.tech/signalr/poll?transport=longPolling&amp;clientProtocol=2.1&amp;connectionToken=K8111tz%2FQLoszJtm%2BcN8HzZjig4CJNWeeVZvIxijM0%2BlQASp%2F8ACHCSnlAqk7FG5FVC50cGd%2FEcJwUjY3ZDvnP3oMpf2MWCAIqxUwdyDEy4QVrCs&amp;connectionData=%5B%7B%22name%22%3A%22loxodohub%22%7D%5D" enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments">
-                <elementProp name="search" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">search</stringProp>
-                  <stringProp name="Argument.value">1</stringProp>
+                <elementProp name="connectionData" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.name">connectionData</stringProp>
+                  <stringProp name="Argument.value">[{&quot;name&quot;:&quot;loxodohub&quot;}]</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
-                <elementProp name="limit" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">limit</stringProp>
-                  <stringProp name="Argument.value">50</stringProp>
+                <elementProp name="connectionToken" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.name">connectionToken</stringProp>
+                  <stringProp name="Argument.value">K8111tz/QLoszJtm+cN8HzZjig4CJNWeeVZvIxijM0+lQASp/8ACHCSnlAqk7FG5FVC50cGd/EcJwUjY3ZDvnP3oMpf2MWCAIqxUwdyDEy4QVrCs</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
-                <elementProp name="page" elementType="HTTPArgument">
+                <elementProp name="transport" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">page</stringProp>
-                  <stringProp name="Argument.value">1</stringProp>
+                  <stringProp name="Argument.name">transport</stringProp>
+                  <stringProp name="Argument.value">longPolling</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
-              </collectionProp>
-            </elementProp>
-            <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
-            <stringProp name="HTTPSampler.port"></stringProp>
-            <stringProp name="HTTPSampler.protocol">http</stringProp>
-            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">api/items/all</stringProp>
-            <stringProp name="HTTPSampler.method">GET</stringProp>
-            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-            <stringProp name="HTTPSampler.response_timeout"></stringProp>
-          </HTTPSamplerProxy>
-          <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
-              <collectionProp name="HeaderManager.headers">
-                <elementProp name="Authorization" elementType="Header">
-                  <stringProp name="Header.name">Authorization</stringProp>
-                  <stringProp name="Header.value">Bearer N5C5atWxGMVnD2gNCF7gBHKRhdzycIeYu5-qdKfGvhu-Dn9l44IqaK2KeT4oOjFSEu3p84jJBBWSbN9IN6WqZ1mF9vSHQN2oPIaPqVN6ccs2QFCcgPBnJfOgdbc-mSUkm5cGMh_c6v-aB9QjhhNYCRAmZjcTHmlITPm0sk-8f8U0toKc4evCXk1UG9ScB9IWGQJgQp-FEPFEheN_wtWwRm0WngEHDfVZm-GlEPI06dKbtXWCIRkD6FL4eeNg0kmpw4EQ5mVrdZVqKL8thRqqb8xoCsXEkRKikSKHgxrIrXiPCPlE</stringProp>
-                </elementProp>
-              </collectionProp>
-            </HeaderManager>
-            <hashTree/>
-          </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="http://loxodo.tech/api/items/all?page=1&amp;limit=50&amp;search=1" enabled="true">
-            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
-              <collectionProp name="Arguments.arguments">
-                <elementProp name="search" elementType="HTTPArgument">
+                <elementProp name="clientProtocol" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">search</stringProp>
-                  <stringProp name="Argument.value">1</stringProp>
+                  <stringProp name="Argument.name">clientProtocol</stringProp>
+                  <stringProp name="Argument.value">2.1</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
-                <elementProp name="limit" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">limit</stringProp>
-                  <stringProp name="Argument.value">50</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-                <elementProp name="page" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">page</stringProp>
-                  <stringProp name="Argument.value">1</stringProp>
+                <elementProp name="messageId" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.name">messageId</stringProp>
+                  <stringProp name="Argument.value">d-62883A51-Cs,0|FN,0|FO,2</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
               </collectionProp>
@@ -737,571 +960,7 @@
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol">http</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">api/items/all</stringProp>
-            <stringProp name="HTTPSampler.method">GET</stringProp>
-            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-            <stringProp name="HTTPSampler.response_timeout"></stringProp>
-          </HTTPSamplerProxy>
-          <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
-              <collectionProp name="HeaderManager.headers">
-                <elementProp name="Authorization" elementType="Header">
-                  <stringProp name="Header.name">Authorization</stringProp>
-                  <stringProp name="Header.value">Bearer N5C5atWxGMVnD2gNCF7gBHKRhdzycIeYu5-qdKfGvhu-Dn9l44IqaK2KeT4oOjFSEu3p84jJBBWSbN9IN6WqZ1mF9vSHQN2oPIaPqVN6ccs2QFCcgPBnJfOgdbc-mSUkm5cGMh_c6v-aB9QjhhNYCRAmZjcTHmlITPm0sk-8f8U0toKc4evCXk1UG9ScB9IWGQJgQp-FEPFEheN_wtWwRm0WngEHDfVZm-GlEPI06dKbtXWCIRkD6FL4eeNg0kmpw4EQ5mVrdZVqKL8thRqqb8xoCsXEkRKikSKHgxrIrXiPCPlE</stringProp>
-                </elementProp>
-              </collectionProp>
-            </HeaderManager>
-            <hashTree/>
-          </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="http://loxodo.tech/api/items/all?page=1&amp;limit=50&amp;search=l" enabled="true">
-            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
-              <collectionProp name="Arguments.arguments">
-                <elementProp name="search" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">search</stringProp>
-                  <stringProp name="Argument.value">l</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-                <elementProp name="limit" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">limit</stringProp>
-                  <stringProp name="Argument.value">50</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-                <elementProp name="page" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">page</stringProp>
-                  <stringProp name="Argument.value">1</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-              </collectionProp>
-            </elementProp>
-            <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
-            <stringProp name="HTTPSampler.port"></stringProp>
-            <stringProp name="HTTPSampler.protocol">http</stringProp>
-            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">api/items/all</stringProp>
-            <stringProp name="HTTPSampler.method">GET</stringProp>
-            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-            <stringProp name="HTTPSampler.response_timeout"></stringProp>
-          </HTTPSamplerProxy>
-          <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
-              <collectionProp name="HeaderManager.headers">
-                <elementProp name="Authorization" elementType="Header">
-                  <stringProp name="Header.name">Authorization</stringProp>
-                  <stringProp name="Header.value">Bearer N5C5atWxGMVnD2gNCF7gBHKRhdzycIeYu5-qdKfGvhu-Dn9l44IqaK2KeT4oOjFSEu3p84jJBBWSbN9IN6WqZ1mF9vSHQN2oPIaPqVN6ccs2QFCcgPBnJfOgdbc-mSUkm5cGMh_c6v-aB9QjhhNYCRAmZjcTHmlITPm0sk-8f8U0toKc4evCXk1UG9ScB9IWGQJgQp-FEPFEheN_wtWwRm0WngEHDfVZm-GlEPI06dKbtXWCIRkD6FL4eeNg0kmpw4EQ5mVrdZVqKL8thRqqb8xoCsXEkRKikSKHgxrIrXiPCPlE</stringProp>
-                </elementProp>
-              </collectionProp>
-            </HeaderManager>
-            <hashTree/>
-          </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="http://loxodo.tech/api/items/all?page=1&amp;limit=50&amp;search=lo" enabled="true">
-            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
-              <collectionProp name="Arguments.arguments">
-                <elementProp name="search" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">search</stringProp>
-                  <stringProp name="Argument.value">lo</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-                <elementProp name="limit" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">limit</stringProp>
-                  <stringProp name="Argument.value">50</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-                <elementProp name="page" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">page</stringProp>
-                  <stringProp name="Argument.value">1</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-              </collectionProp>
-            </elementProp>
-            <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
-            <stringProp name="HTTPSampler.port"></stringProp>
-            <stringProp name="HTTPSampler.protocol">http</stringProp>
-            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">api/items/all</stringProp>
-            <stringProp name="HTTPSampler.method">GET</stringProp>
-            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-            <stringProp name="HTTPSampler.response_timeout"></stringProp>
-          </HTTPSamplerProxy>
-          <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
-              <collectionProp name="HeaderManager.headers">
-                <elementProp name="Authorization" elementType="Header">
-                  <stringProp name="Header.name">Authorization</stringProp>
-                  <stringProp name="Header.value">Bearer N5C5atWxGMVnD2gNCF7gBHKRhdzycIeYu5-qdKfGvhu-Dn9l44IqaK2KeT4oOjFSEu3p84jJBBWSbN9IN6WqZ1mF9vSHQN2oPIaPqVN6ccs2QFCcgPBnJfOgdbc-mSUkm5cGMh_c6v-aB9QjhhNYCRAmZjcTHmlITPm0sk-8f8U0toKc4evCXk1UG9ScB9IWGQJgQp-FEPFEheN_wtWwRm0WngEHDfVZm-GlEPI06dKbtXWCIRkD6FL4eeNg0kmpw4EQ5mVrdZVqKL8thRqqb8xoCsXEkRKikSKHgxrIrXiPCPlE</stringProp>
-                </elementProp>
-              </collectionProp>
-            </HeaderManager>
-            <hashTree/>
-          </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="http://loxodo.tech/api/items/all?page=1&amp;limit=50&amp;search=l" enabled="true">
-            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
-              <collectionProp name="Arguments.arguments">
-                <elementProp name="search" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">search</stringProp>
-                  <stringProp name="Argument.value">l</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-                <elementProp name="limit" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">limit</stringProp>
-                  <stringProp name="Argument.value">50</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-                <elementProp name="page" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">page</stringProp>
-                  <stringProp name="Argument.value">1</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-              </collectionProp>
-            </elementProp>
-            <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
-            <stringProp name="HTTPSampler.port"></stringProp>
-            <stringProp name="HTTPSampler.protocol">http</stringProp>
-            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">api/items/all</stringProp>
-            <stringProp name="HTTPSampler.method">GET</stringProp>
-            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-            <stringProp name="HTTPSampler.response_timeout"></stringProp>
-          </HTTPSamplerProxy>
-          <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
-              <collectionProp name="HeaderManager.headers">
-                <elementProp name="Authorization" elementType="Header">
-                  <stringProp name="Header.name">Authorization</stringProp>
-                  <stringProp name="Header.value">Bearer N5C5atWxGMVnD2gNCF7gBHKRhdzycIeYu5-qdKfGvhu-Dn9l44IqaK2KeT4oOjFSEu3p84jJBBWSbN9IN6WqZ1mF9vSHQN2oPIaPqVN6ccs2QFCcgPBnJfOgdbc-mSUkm5cGMh_c6v-aB9QjhhNYCRAmZjcTHmlITPm0sk-8f8U0toKc4evCXk1UG9ScB9IWGQJgQp-FEPFEheN_wtWwRm0WngEHDfVZm-GlEPI06dKbtXWCIRkD6FL4eeNg0kmpw4EQ5mVrdZVqKL8thRqqb8xoCsXEkRKikSKHgxrIrXiPCPlE</stringProp>
-                </elementProp>
-              </collectionProp>
-            </HeaderManager>
-            <hashTree/>
-          </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="http://loxodo.tech/api/items/all?page=1&amp;limit=50&amp;search=1" enabled="true">
-            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
-              <collectionProp name="Arguments.arguments">
-                <elementProp name="search" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">search</stringProp>
-                  <stringProp name="Argument.value">1</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-                <elementProp name="limit" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">limit</stringProp>
-                  <stringProp name="Argument.value">50</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-                <elementProp name="page" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">page</stringProp>
-                  <stringProp name="Argument.value">1</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-              </collectionProp>
-            </elementProp>
-            <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
-            <stringProp name="HTTPSampler.port"></stringProp>
-            <stringProp name="HTTPSampler.protocol">http</stringProp>
-            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">api/items/all</stringProp>
-            <stringProp name="HTTPSampler.method">GET</stringProp>
-            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-            <stringProp name="HTTPSampler.response_timeout"></stringProp>
-          </HTTPSamplerProxy>
-          <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
-              <collectionProp name="HeaderManager.headers">
-                <elementProp name="Authorization" elementType="Header">
-                  <stringProp name="Header.name">Authorization</stringProp>
-                  <stringProp name="Header.value">Bearer N5C5atWxGMVnD2gNCF7gBHKRhdzycIeYu5-qdKfGvhu-Dn9l44IqaK2KeT4oOjFSEu3p84jJBBWSbN9IN6WqZ1mF9vSHQN2oPIaPqVN6ccs2QFCcgPBnJfOgdbc-mSUkm5cGMh_c6v-aB9QjhhNYCRAmZjcTHmlITPm0sk-8f8U0toKc4evCXk1UG9ScB9IWGQJgQp-FEPFEheN_wtWwRm0WngEHDfVZm-GlEPI06dKbtXWCIRkD6FL4eeNg0kmpw4EQ5mVrdZVqKL8thRqqb8xoCsXEkRKikSKHgxrIrXiPCPlE</stringProp>
-                </elementProp>
-              </collectionProp>
-            </HeaderManager>
-            <hashTree/>
-          </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="http://loxodo.tech/api/items/all?page=1&amp;limit=50&amp;search=l" enabled="true">
-            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
-              <collectionProp name="Arguments.arguments">
-                <elementProp name="search" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">search</stringProp>
-                  <stringProp name="Argument.value">l</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-                <elementProp name="limit" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">limit</stringProp>
-                  <stringProp name="Argument.value">50</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-                <elementProp name="page" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">page</stringProp>
-                  <stringProp name="Argument.value">1</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-              </collectionProp>
-            </elementProp>
-            <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
-            <stringProp name="HTTPSampler.port"></stringProp>
-            <stringProp name="HTTPSampler.protocol">http</stringProp>
-            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">api/items/all</stringProp>
-            <stringProp name="HTTPSampler.method">GET</stringProp>
-            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-            <stringProp name="HTTPSampler.response_timeout"></stringProp>
-          </HTTPSamplerProxy>
-          <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
-              <collectionProp name="HeaderManager.headers">
-                <elementProp name="Authorization" elementType="Header">
-                  <stringProp name="Header.name">Authorization</stringProp>
-                  <stringProp name="Header.value">Bearer N5C5atWxGMVnD2gNCF7gBHKRhdzycIeYu5-qdKfGvhu-Dn9l44IqaK2KeT4oOjFSEu3p84jJBBWSbN9IN6WqZ1mF9vSHQN2oPIaPqVN6ccs2QFCcgPBnJfOgdbc-mSUkm5cGMh_c6v-aB9QjhhNYCRAmZjcTHmlITPm0sk-8f8U0toKc4evCXk1UG9ScB9IWGQJgQp-FEPFEheN_wtWwRm0WngEHDfVZm-GlEPI06dKbtXWCIRkD6FL4eeNg0kmpw4EQ5mVrdZVqKL8thRqqb8xoCsXEkRKikSKHgxrIrXiPCPlE</stringProp>
-                </elementProp>
-              </collectionProp>
-            </HeaderManager>
-            <hashTree/>
-          </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="http://loxodo.tech/api/items/all?page=1&amp;limit=50&amp;search=lo" enabled="true">
-            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
-              <collectionProp name="Arguments.arguments">
-                <elementProp name="search" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">search</stringProp>
-                  <stringProp name="Argument.value">lo</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-                <elementProp name="limit" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">limit</stringProp>
-                  <stringProp name="Argument.value">50</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-                <elementProp name="page" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">page</stringProp>
-                  <stringProp name="Argument.value">1</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-              </collectionProp>
-            </elementProp>
-            <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
-            <stringProp name="HTTPSampler.port"></stringProp>
-            <stringProp name="HTTPSampler.protocol">http</stringProp>
-            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">api/items/all</stringProp>
-            <stringProp name="HTTPSampler.method">GET</stringProp>
-            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-            <stringProp name="HTTPSampler.response_timeout"></stringProp>
-          </HTTPSamplerProxy>
-          <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
-              <collectionProp name="HeaderManager.headers">
-                <elementProp name="Authorization" elementType="Header">
-                  <stringProp name="Header.name">Authorization</stringProp>
-                  <stringProp name="Header.value">Bearer N5C5atWxGMVnD2gNCF7gBHKRhdzycIeYu5-qdKfGvhu-Dn9l44IqaK2KeT4oOjFSEu3p84jJBBWSbN9IN6WqZ1mF9vSHQN2oPIaPqVN6ccs2QFCcgPBnJfOgdbc-mSUkm5cGMh_c6v-aB9QjhhNYCRAmZjcTHmlITPm0sk-8f8U0toKc4evCXk1UG9ScB9IWGQJgQp-FEPFEheN_wtWwRm0WngEHDfVZm-GlEPI06dKbtXWCIRkD6FL4eeNg0kmpw4EQ5mVrdZVqKL8thRqqb8xoCsXEkRKikSKHgxrIrXiPCPlE</stringProp>
-                </elementProp>
-              </collectionProp>
-            </HeaderManager>
-            <hashTree/>
-          </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="http://loxodo.tech/api/items/all?page=1&amp;limit=50&amp;search=lo" enabled="true">
-            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
-              <collectionProp name="Arguments.arguments">
-                <elementProp name="search" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">search</stringProp>
-                  <stringProp name="Argument.value">lo</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-                <elementProp name="limit" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">limit</stringProp>
-                  <stringProp name="Argument.value">50</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-                <elementProp name="page" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">page</stringProp>
-                  <stringProp name="Argument.value">1</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-              </collectionProp>
-            </elementProp>
-            <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
-            <stringProp name="HTTPSampler.port"></stringProp>
-            <stringProp name="HTTPSampler.protocol">http</stringProp>
-            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">api/items/all</stringProp>
-            <stringProp name="HTTPSampler.method">GET</stringProp>
-            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-            <stringProp name="HTTPSampler.response_timeout"></stringProp>
-          </HTTPSamplerProxy>
-          <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
-              <collectionProp name="HeaderManager.headers">
-                <elementProp name="Authorization" elementType="Header">
-                  <stringProp name="Header.name">Authorization</stringProp>
-                  <stringProp name="Header.value">Bearer N5C5atWxGMVnD2gNCF7gBHKRhdzycIeYu5-qdKfGvhu-Dn9l44IqaK2KeT4oOjFSEu3p84jJBBWSbN9IN6WqZ1mF9vSHQN2oPIaPqVN6ccs2QFCcgPBnJfOgdbc-mSUkm5cGMh_c6v-aB9QjhhNYCRAmZjcTHmlITPm0sk-8f8U0toKc4evCXk1UG9ScB9IWGQJgQp-FEPFEheN_wtWwRm0WngEHDfVZm-GlEPI06dKbtXWCIRkD6FL4eeNg0kmpw4EQ5mVrdZVqKL8thRqqb8xoCsXEkRKikSKHgxrIrXiPCPlE</stringProp>
-                </elementProp>
-              </collectionProp>
-            </HeaderManager>
-            <hashTree/>
-          </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="http://loxodo.tech/api/items/all?page=1&amp;limit=50&amp;search=l" enabled="true">
-            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
-              <collectionProp name="Arguments.arguments">
-                <elementProp name="search" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">search</stringProp>
-                  <stringProp name="Argument.value">l</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-                <elementProp name="limit" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">limit</stringProp>
-                  <stringProp name="Argument.value">50</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-                <elementProp name="page" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">page</stringProp>
-                  <stringProp name="Argument.value">1</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-              </collectionProp>
-            </elementProp>
-            <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
-            <stringProp name="HTTPSampler.port"></stringProp>
-            <stringProp name="HTTPSampler.protocol">http</stringProp>
-            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">api/items/all</stringProp>
-            <stringProp name="HTTPSampler.method">GET</stringProp>
-            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-            <stringProp name="HTTPSampler.response_timeout"></stringProp>
-          </HTTPSamplerProxy>
-          <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
-              <collectionProp name="HeaderManager.headers">
-                <elementProp name="Authorization" elementType="Header">
-                  <stringProp name="Header.name">Authorization</stringProp>
-                  <stringProp name="Header.value">Bearer N5C5atWxGMVnD2gNCF7gBHKRhdzycIeYu5-qdKfGvhu-Dn9l44IqaK2KeT4oOjFSEu3p84jJBBWSbN9IN6WqZ1mF9vSHQN2oPIaPqVN6ccs2QFCcgPBnJfOgdbc-mSUkm5cGMh_c6v-aB9QjhhNYCRAmZjcTHmlITPm0sk-8f8U0toKc4evCXk1UG9ScB9IWGQJgQp-FEPFEheN_wtWwRm0WngEHDfVZm-GlEPI06dKbtXWCIRkD6FL4eeNg0kmpw4EQ5mVrdZVqKL8thRqqb8xoCsXEkRKikSKHgxrIrXiPCPlE</stringProp>
-                </elementProp>
-              </collectionProp>
-            </HeaderManager>
-            <hashTree/>
-          </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="http://loxodo.tech/api/items/all?page=1&amp;limit=50&amp;search=l" enabled="true">
-            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
-              <collectionProp name="Arguments.arguments">
-                <elementProp name="search" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">search</stringProp>
-                  <stringProp name="Argument.value">l</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-                <elementProp name="limit" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">limit</stringProp>
-                  <stringProp name="Argument.value">50</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-                <elementProp name="page" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">page</stringProp>
-                  <stringProp name="Argument.value">1</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-              </collectionProp>
-            </elementProp>
-            <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
-            <stringProp name="HTTPSampler.port"></stringProp>
-            <stringProp name="HTTPSampler.protocol">http</stringProp>
-            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">api/items/all</stringProp>
-            <stringProp name="HTTPSampler.method">GET</stringProp>
-            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-            <stringProp name="HTTPSampler.response_timeout"></stringProp>
-          </HTTPSamplerProxy>
-          <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
-              <collectionProp name="HeaderManager.headers">
-                <elementProp name="Authorization" elementType="Header">
-                  <stringProp name="Header.name">Authorization</stringProp>
-                  <stringProp name="Header.value">Bearer N5C5atWxGMVnD2gNCF7gBHKRhdzycIeYu5-qdKfGvhu-Dn9l44IqaK2KeT4oOjFSEu3p84jJBBWSbN9IN6WqZ1mF9vSHQN2oPIaPqVN6ccs2QFCcgPBnJfOgdbc-mSUkm5cGMh_c6v-aB9QjhhNYCRAmZjcTHmlITPm0sk-8f8U0toKc4evCXk1UG9ScB9IWGQJgQp-FEPFEheN_wtWwRm0WngEHDfVZm-GlEPI06dKbtXWCIRkD6FL4eeNg0kmpw4EQ5mVrdZVqKL8thRqqb8xoCsXEkRKikSKHgxrIrXiPCPlE</stringProp>
-                </elementProp>
-              </collectionProp>
-            </HeaderManager>
-            <hashTree/>
-          </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="http://loxodo.tech/api/items/all?page=1&amp;limit=50&amp;search=l" enabled="true">
-            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
-              <collectionProp name="Arguments.arguments">
-                <elementProp name="search" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">search</stringProp>
-                  <stringProp name="Argument.value">l</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-                <elementProp name="limit" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">limit</stringProp>
-                  <stringProp name="Argument.value">50</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-                <elementProp name="page" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">page</stringProp>
-                  <stringProp name="Argument.value">1</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-              </collectionProp>
-            </elementProp>
-            <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
-            <stringProp name="HTTPSampler.port"></stringProp>
-            <stringProp name="HTTPSampler.protocol">http</stringProp>
-            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">api/items/all</stringProp>
-            <stringProp name="HTTPSampler.method">GET</stringProp>
-            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-            <stringProp name="HTTPSampler.response_timeout"></stringProp>
-          </HTTPSamplerProxy>
-          <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
-              <collectionProp name="HeaderManager.headers">
-                <elementProp name="Authorization" elementType="Header">
-                  <stringProp name="Header.name">Authorization</stringProp>
-                  <stringProp name="Header.value">Bearer N5C5atWxGMVnD2gNCF7gBHKRhdzycIeYu5-qdKfGvhu-Dn9l44IqaK2KeT4oOjFSEu3p84jJBBWSbN9IN6WqZ1mF9vSHQN2oPIaPqVN6ccs2QFCcgPBnJfOgdbc-mSUkm5cGMh_c6v-aB9QjhhNYCRAmZjcTHmlITPm0sk-8f8U0toKc4evCXk1UG9ScB9IWGQJgQp-FEPFEheN_wtWwRm0WngEHDfVZm-GlEPI06dKbtXWCIRkD6FL4eeNg0kmpw4EQ5mVrdZVqKL8thRqqb8xoCsXEkRKikSKHgxrIrXiPCPlE</stringProp>
-                </elementProp>
-              </collectionProp>
-            </HeaderManager>
-            <hashTree/>
-          </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="http://loxodo.tech/api/items/all?page=1&amp;limit=50&amp;search=lo" enabled="true">
-            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
-              <collectionProp name="Arguments.arguments">
-                <elementProp name="search" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">search</stringProp>
-                  <stringProp name="Argument.value">lo</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-                <elementProp name="limit" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">limit</stringProp>
-                  <stringProp name="Argument.value">50</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-                <elementProp name="page" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">page</stringProp>
-                  <stringProp name="Argument.value">1</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-              </collectionProp>
-            </elementProp>
-            <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
-            <stringProp name="HTTPSampler.port"></stringProp>
-            <stringProp name="HTTPSampler.protocol">http</stringProp>
-            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">api/items/all</stringProp>
-            <stringProp name="HTTPSampler.method">GET</stringProp>
-            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-            <stringProp name="HTTPSampler.response_timeout"></stringProp>
-          </HTTPSamplerProxy>
-          <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
-              <collectionProp name="HeaderManager.headers">
-                <elementProp name="Authorization" elementType="Header">
-                  <stringProp name="Header.name">Authorization</stringProp>
-                  <stringProp name="Header.value">Bearer N5C5atWxGMVnD2gNCF7gBHKRhdzycIeYu5-qdKfGvhu-Dn9l44IqaK2KeT4oOjFSEu3p84jJBBWSbN9IN6WqZ1mF9vSHQN2oPIaPqVN6ccs2QFCcgPBnJfOgdbc-mSUkm5cGMh_c6v-aB9QjhhNYCRAmZjcTHmlITPm0sk-8f8U0toKc4evCXk1UG9ScB9IWGQJgQp-FEPFEheN_wtWwRm0WngEHDfVZm-GlEPI06dKbtXWCIRkD6FL4eeNg0kmpw4EQ5mVrdZVqKL8thRqqb8xoCsXEkRKikSKHgxrIrXiPCPlE</stringProp>
-                </elementProp>
-              </collectionProp>
-            </HeaderManager>
-            <hashTree/>
-          </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="http://loxodo.tech/api/production-requests" enabled="true">
-            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-              <collectionProp name="Arguments.arguments">
-                <elementProp name="" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">{&quot;prod_id&quot;:&quot;Prod-20202326&quot;,&quot;source_warehouse_id&quot;:&quot;03327f18-6c1d-486c-9097-cfc49ad0f882&quot;,&quot;production_warehouse_id&quot;:&quot;03327f18-6c1d-486c-9097-cfc49ad0f882&quot;,&quot;start_date&quot;:&quot;2020-03-26T09:07:35.000Z&quot;,&quot;end_date&quot;:&quot;2020-03-26T09:07:35.000Z&quot;,&quot;is_backflush&quot;:true,&quot;output_items&quot;:[{&quot;item_code&quot;:&quot;XM855FL&quot;,&quot;name&quot;:&quot;XM855FL&quot;,&quot;ext_id&quot;:&quot;&quot;,&quot;item_description&quot;:null,&quot;consumer_package_code&quot;:&quot;&quot;,&quot;ext_part_number&quot;:&quot;&quot;,&quot;ext_part_number2&quot;:&quot;&quot;,&quot;ext_part_number3&quot;:&quot;&quot;,&quot;gtin&quot;:&quot;&quot;,&quot;quantity&quot;:{&quot;content&quot;:1,&quot;uom&quot;:&quot;EA&quot;},&quot;weight&quot;:{&quot;content&quot;:1,&quot;uom&quot;:null},&quot;price&quot;:50,&quot;total_price&quot;:50,&quot;stocking_uoms&quot;:[&quot;EA&quot;]}],&quot;input_items&quot;:[{&quot;item_code&quot;:&quot;XPD-LPR-9A&quot;,&quot;name&quot;:&quot;XPD-LPR-9A&quot;,&quot;ext_id&quot;:&quot;&quot;,&quot;item_description&quot;:null,&quot;consumer_package_code&quot;:&quot;&quot;,&quot;ext_part_number&quot;:&quot;&quot;,&quot;ext_part_number2&quot;:&quot;&quot;,&quot;ext_part_number3&quot;:&quot;&quot;,&quot;gtin&quot;:&quot;&quot;,&quot;quantity&quot;:{&quot;content&quot;:1,&quot;uom&quot;:&quot;EA&quot;},&quot;weight&quot;:{&quot;content&quot;:1,&quot;uom&quot;:null},&quot;price&quot;:50,&quot;total_price&quot;:50,&quot;stocking_uoms&quot;:[&quot;EA&quot;]}]}</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-              </collectionProp>
-            </elementProp>
-            <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
-            <stringProp name="HTTPSampler.port"></stringProp>
-            <stringProp name="HTTPSampler.protocol">http</stringProp>
-            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">api/production-requests</stringProp>
+            <stringProp name="HTTPSampler.path">signalr/poll</stringProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -1314,25 +973,29 @@
           <hashTree>
             <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
               <collectionProp name="HeaderManager.headers">
-                <elementProp name="Authorization" elementType="Header">
-                  <stringProp name="Header.name">Authorization</stringProp>
-                  <stringProp name="Header.value">Bearer N5C5atWxGMVnD2gNCF7gBHKRhdzycIeYu5-qdKfGvhu-Dn9l44IqaK2KeT4oOjFSEu3p84jJBBWSbN9IN6WqZ1mF9vSHQN2oPIaPqVN6ccs2QFCcgPBnJfOgdbc-mSUkm5cGMh_c6v-aB9QjhhNYCRAmZjcTHmlITPm0sk-8f8U0toKc4evCXk1UG9ScB9IWGQJgQp-FEPFEheN_wtWwRm0WngEHDfVZm-GlEPI06dKbtXWCIRkD6FL4eeNg0kmpw4EQ5mVrdZVqKL8thRqqb8xoCsXEkRKikSKHgxrIrXiPCPlE</stringProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">text/plain, */*; q=0.01</stringProp>
+                </elementProp>
+                <elementProp name="X-Requested-With" elementType="Header">
+                  <stringProp name="Header.name">X-Requested-With</stringProp>
+                  <stringProp name="Header.value">XMLHttpRequest</stringProp>
                 </elementProp>
                 <elementProp name="Content-Type" elementType="Header">
                   <stringProp name="Header.name">Content-Type</stringProp>
-                  <stringProp name="Header.value">application/json</stringProp>
+                  <stringProp name="Header.value">application/x-www-form-urlencoded; charset=UTF-8</stringProp>
                 </elementProp>
               </collectionProp>
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="http://loxodo.tech/api/production-requests" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="http://loxodo.tech/api/v2/supply-to-production/tasks/confirm/line-items" enabled="true">
             <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
               <collectionProp name="Arguments.arguments">
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">{&quot;prod_id&quot;:&quot;Prod-20202326&quot;,&quot;source_warehouse_id&quot;:&quot;03327f18-6c1d-486c-9097-cfc49ad0f882&quot;,&quot;production_warehouse_id&quot;:&quot;03327f18-6c1d-486c-9097-cfc49ad0f882&quot;,&quot;start_date&quot;:&quot;2020-03-26T09:07:35.000Z&quot;,&quot;end_date&quot;:&quot;2020-03-26T09:07:35.000Z&quot;,&quot;is_backflush&quot;:true,&quot;output_items&quot;:[{&quot;item_code&quot;:&quot;XM855FL&quot;,&quot;name&quot;:&quot;XM855FL&quot;,&quot;ext_id&quot;:&quot;&quot;,&quot;item_description&quot;:null,&quot;consumer_package_code&quot;:&quot;&quot;,&quot;ext_part_number&quot;:&quot;&quot;,&quot;ext_part_number2&quot;:&quot;&quot;,&quot;ext_part_number3&quot;:&quot;&quot;,&quot;gtin&quot;:&quot;&quot;,&quot;quantity&quot;:{&quot;content&quot;:1,&quot;uom&quot;:&quot;EA&quot;},&quot;weight&quot;:{&quot;content&quot;:1,&quot;uom&quot;:&quot;Gram&quot;},&quot;price&quot;:50,&quot;total_price&quot;:50,&quot;stocking_uoms&quot;:[&quot;EA&quot;]}],&quot;input_items&quot;:[{&quot;item_code&quot;:&quot;XPD-LPR-9A&quot;,&quot;name&quot;:&quot;XPD-LPR-9A&quot;,&quot;ext_id&quot;:&quot;&quot;,&quot;item_description&quot;:null,&quot;consumer_package_code&quot;:&quot;&quot;,&quot;ext_part_number&quot;:&quot;&quot;,&quot;ext_part_number2&quot;:&quot;&quot;,&quot;ext_part_number3&quot;:&quot;&quot;,&quot;gtin&quot;:&quot;&quot;,&quot;quantity&quot;:{&quot;content&quot;:1,&quot;uom&quot;:&quot;EA&quot;},&quot;weight&quot;:{&quot;content&quot;:1,&quot;uom&quot;:&quot;Gram&quot;},&quot;price&quot;:50,&quot;total_price&quot;:50,&quot;stocking_uoms&quot;:[&quot;EA&quot;]}]}</stringProp>
+                  <stringProp name="Argument.value">{&quot;task_id&quot;:1349,&quot;license_plate_id&quot;:&quot;&quot;,&quot;line_confirms&quot;:[{&quot;line_item_id&quot;:1595,&quot;quantity&quot;:{&quot;content&quot;:1,&quot;uom&quot;:&quot;KG&quot;},&quot;batch_number&quot;:&quot;&quot;,&quot;serial_number&quot;:&quot;&quot;}]}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
               </collectionProp>
@@ -1341,7 +1004,7 @@
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol">http</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">api/production-requests</stringProp>
+            <stringProp name="HTTPSampler.path">api/v2/supply-to-production/tasks/confirm/line-items</stringProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -1354,9 +1017,13 @@
           <hashTree>
             <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
               <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
                 <elementProp name="Authorization" elementType="Header">
                   <stringProp name="Header.name">Authorization</stringProp>
-                  <stringProp name="Header.value">Bearer N5C5atWxGMVnD2gNCF7gBHKRhdzycIeYu5-qdKfGvhu-Dn9l44IqaK2KeT4oOjFSEu3p84jJBBWSbN9IN6WqZ1mF9vSHQN2oPIaPqVN6ccs2QFCcgPBnJfOgdbc-mSUkm5cGMh_c6v-aB9QjhhNYCRAmZjcTHmlITPm0sk-8f8U0toKc4evCXk1UG9ScB9IWGQJgQp-FEPFEheN_wtWwRm0WngEHDfVZm-GlEPI06dKbtXWCIRkD6FL4eeNg0kmpw4EQ5mVrdZVqKL8thRqqb8xoCsXEkRKikSKHgxrIrXiPCPlE</stringProp>
+                  <stringProp name="Header.value">Bearer hwI2i_oTmVB0Ws31VTVRDdp-127n7GvBeVlXIzMc7Cg8347jvBtrLWVCv4LetepFqGYA9BhkogMhiKzzFdSUSihTT8KD5WosoeXyqKJch1kx4ZMXIQosJTnfV1wREuVbIwmycJ7ygcDx-yRcdnLHdl4iKhX26hZJLFAFj06MwOvlRxivwm6vSGeSoN9yw8U6c4cCfRrXAncbA92oKhEG4opTfIWxkaUryBhpc_q4T54NIifY0sWWCzfzigTg8aXTObrd599btVm0vVxImg854A5e4tBWhHFTlGfOmvsMpTDC6hDe</stringProp>
                 </elementProp>
                 <elementProp name="Content-Type" elementType="Header">
                   <stringProp name="Header.name">Content-Type</stringProp>
@@ -1366,7 +1033,216 @@
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="http://loxodo.tech/api/production-requests?warehouse_ID=e8d07968-4ce8-42b8-96d2-a686baddc3a0&amp;paginate=true&amp;sort_By=%7B%22value%22:%22production_number%22,%22direction%22:%22asc%22%7D&amp;status=0" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="http://loxodo.tech/api/v2/supply-to-production/tasks/confirm/line-items" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;task_id&quot;:1349,&quot;license_plate_id&quot;:&quot;&quot;,&quot;line_confirms&quot;:[{&quot;line_item_id&quot;:1596,&quot;quantity&quot;:{&quot;content&quot;:1,&quot;uom&quot;:&quot;B02&quot;},&quot;batch_number&quot;:&quot;&quot;,&quot;serial_number&quot;:&quot;&quot;}]}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">http</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">api/v2/supply-to-production/tasks/confirm/line-items</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+                <elementProp name="Authorization" elementType="Header">
+                  <stringProp name="Header.name">Authorization</stringProp>
+                  <stringProp name="Header.value">Bearer hwI2i_oTmVB0Ws31VTVRDdp-127n7GvBeVlXIzMc7Cg8347jvBtrLWVCv4LetepFqGYA9BhkogMhiKzzFdSUSihTT8KD5WosoeXyqKJch1kx4ZMXIQosJTnfV1wREuVbIwmycJ7ygcDx-yRcdnLHdl4iKhX26hZJLFAFj06MwOvlRxivwm6vSGeSoN9yw8U6c4cCfRrXAncbA92oKhEG4opTfIWxkaUryBhpc_q4T54NIifY0sWWCzfzigTg8aXTObrd599btVm0vVxImg854A5e4tBWhHFTlGfOmvsMpTDC6hDe</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="http://loxodo.tech/api/v2/supply-to-production/tasks/confirm/line-items" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;task_id&quot;:1349,&quot;license_plate_id&quot;:&quot;&quot;,&quot;line_confirms&quot;:[{&quot;line_item_id&quot;:1597,&quot;quantity&quot;:{&quot;content&quot;:1,&quot;uom&quot;:&quot;EA&quot;},&quot;batch_number&quot;:&quot;555&quot;,&quot;serial_number&quot;:&quot;&quot;}]}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">http</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">api/v2/supply-to-production/tasks/confirm/line-items</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+                <elementProp name="Authorization" elementType="Header">
+                  <stringProp name="Header.name">Authorization</stringProp>
+                  <stringProp name="Header.value">Bearer hwI2i_oTmVB0Ws31VTVRDdp-127n7GvBeVlXIzMc7Cg8347jvBtrLWVCv4LetepFqGYA9BhkogMhiKzzFdSUSihTT8KD5WosoeXyqKJch1kx4ZMXIQosJTnfV1wREuVbIwmycJ7ygcDx-yRcdnLHdl4iKhX26hZJLFAFj06MwOvlRxivwm6vSGeSoN9yw8U6c4cCfRrXAncbA92oKhEG4opTfIWxkaUryBhpc_q4T54NIifY0sWWCzfzigTg8aXTObrd599btVm0vVxImg854A5e4tBWhHFTlGfOmvsMpTDC6hDe</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="http://loxodo.tech/api/v2/supply-to-production/tasks/confirm/line-items" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;task_id&quot;:1349,&quot;license_plate_id&quot;:&quot;&quot;,&quot;line_confirms&quot;:[{&quot;line_item_id&quot;:1598,&quot;quantity&quot;:{&quot;content&quot;:1,&quot;uom&quot;:&quot;PK&quot;},&quot;batch_number&quot;:&quot;&quot;,&quot;serial_number&quot;:&quot;1039&quot;}]}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">http</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">api/v2/supply-to-production/tasks/confirm/line-items</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+                <elementProp name="Authorization" elementType="Header">
+                  <stringProp name="Header.name">Authorization</stringProp>
+                  <stringProp name="Header.value">Bearer hwI2i_oTmVB0Ws31VTVRDdp-127n7GvBeVlXIzMc7Cg8347jvBtrLWVCv4LetepFqGYA9BhkogMhiKzzFdSUSihTT8KD5WosoeXyqKJch1kx4ZMXIQosJTnfV1wREuVbIwmycJ7ygcDx-yRcdnLHdl4iKhX26hZJLFAFj06MwOvlRxivwm6vSGeSoN9yw8U6c4cCfRrXAncbA92oKhEG4opTfIWxkaUryBhpc_q4T54NIifY0sWWCzfzigTg8aXTObrd599btVm0vVxImg854A5e4tBWhHFTlGfOmvsMpTDC6hDe</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="http://loxodo.tech/api/v2/supply-to-production/tasks/1349/current-bin" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">http</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">api/v2/supply-to-production/tasks/1349/current-bin</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+                <elementProp name="Authorization" elementType="Header">
+                  <stringProp name="Header.name">Authorization</stringProp>
+                  <stringProp name="Header.value">Bearer hwI2i_oTmVB0Ws31VTVRDdp-127n7GvBeVlXIzMc7Cg8347jvBtrLWVCv4LetepFqGYA9BhkogMhiKzzFdSUSihTT8KD5WosoeXyqKJch1kx4ZMXIQosJTnfV1wREuVbIwmycJ7ygcDx-yRcdnLHdl4iKhX26hZJLFAFj06MwOvlRxivwm6vSGeSoN9yw8U6c4cCfRrXAncbA92oKhEG4opTfIWxkaUryBhpc_q4T54NIifY0sWWCzfzigTg8aXTObrd599btVm0vVxImg854A5e4tBWhHFTlGfOmvsMpTDC6hDe</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="http://loxodo.tech/api/v2/supply-to-production/tasks/confirm" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;task_id&quot;:1349}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">http</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">api/v2/supply-to-production/tasks/confirm</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+                <elementProp name="Authorization" elementType="Header">
+                  <stringProp name="Header.name">Authorization</stringProp>
+                  <stringProp name="Header.value">Bearer hwI2i_oTmVB0Ws31VTVRDdp-127n7GvBeVlXIzMc7Cg8347jvBtrLWVCv4LetepFqGYA9BhkogMhiKzzFdSUSihTT8KD5WosoeXyqKJch1kx4ZMXIQosJTnfV1wREuVbIwmycJ7ygcDx-yRcdnLHdl4iKhX26hZJLFAFj06MwOvlRxivwm6vSGeSoN9yw8U6c4cCfRrXAncbA92oKhEG4opTfIWxkaUryBhpc_q4T54NIifY0sWWCzfzigTg8aXTObrd599btVm0vVxImg854A5e4tBWhHFTlGfOmvsMpTDC6hDe</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="http://loxodo.tech/api/v2/supply-to-production/tasks?warehouse_ID=d7382fed-2ed4-4cb1-a45f-f781e78f5f18&amp;paginate=true&amp;status=%5B0,1%5D" enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments">
                 <elementProp name="paginate" elementType="HTTPArgument">
@@ -1375,22 +1251,16 @@
                   <stringProp name="Argument.value">true</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
-                <elementProp name="sort_By" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                  <stringProp name="Argument.name">sort_By</stringProp>
-                  <stringProp name="Argument.value">{&quot;value&quot;:&quot;production_number&quot;,&quot;direction&quot;:&quot;asc&quot;}</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
                 <elementProp name="warehouse_ID" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.name">warehouse_ID</stringProp>
-                  <stringProp name="Argument.value">e8d07968-4ce8-42b8-96d2-a686baddc3a0</stringProp>
+                  <stringProp name="Argument.value">d7382fed-2ed4-4cb1-a45f-f781e78f5f18</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
                 <elementProp name="status" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
                   <stringProp name="Argument.name">status</stringProp>
-                  <stringProp name="Argument.value">0</stringProp>
+                  <stringProp name="Argument.value">[0,1]</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
               </collectionProp>
@@ -1399,7 +1269,7 @@
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol">http</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">api/production-requests</stringProp>
+            <stringProp name="HTTPSampler.path">api/v2/supply-to-production/tasks</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -1412,9 +1282,13 @@
           <hashTree>
             <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
               <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
                 <elementProp name="Authorization" elementType="Header">
                   <stringProp name="Header.name">Authorization</stringProp>
-                  <stringProp name="Header.value">Bearer N5C5atWxGMVnD2gNCF7gBHKRhdzycIeYu5-qdKfGvhu-Dn9l44IqaK2KeT4oOjFSEu3p84jJBBWSbN9IN6WqZ1mF9vSHQN2oPIaPqVN6ccs2QFCcgPBnJfOgdbc-mSUkm5cGMh_c6v-aB9QjhhNYCRAmZjcTHmlITPm0sk-8f8U0toKc4evCXk1UG9ScB9IWGQJgQp-FEPFEheN_wtWwRm0WngEHDfVZm-GlEPI06dKbtXWCIRkD6FL4eeNg0kmpw4EQ5mVrdZVqKL8thRqqb8xoCsXEkRKikSKHgxrIrXiPCPlE</stringProp>
+                  <stringProp name="Header.value">Bearer hwI2i_oTmVB0Ws31VTVRDdp-127n7GvBeVlXIzMc7Cg8347jvBtrLWVCv4LetepFqGYA9BhkogMhiKzzFdSUSihTT8KD5WosoeXyqKJch1kx4ZMXIQosJTnfV1wREuVbIwmycJ7ygcDx-yRcdnLHdl4iKhX26hZJLFAFj06MwOvlRxivwm6vSGeSoN9yw8U6c4cCfRrXAncbA92oKhEG4opTfIWxkaUryBhpc_q4T54NIifY0sWWCzfzigTg8aXTObrd599btVm0vVxImg854A5e4tBWhHFTlGfOmvsMpTDC6hDe</stringProp>
                 </elementProp>
               </collectionProp>
             </HeaderManager>
@@ -1459,6 +1333,43 @@
         </ResultCollector>
         <hashTree/>
         <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <ResultCollector guiclass="StatGraphVisualizer" testclass="ResultCollector" testname="Aggregate Graph" enabled="true">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
             <name>saveConfig</name>
